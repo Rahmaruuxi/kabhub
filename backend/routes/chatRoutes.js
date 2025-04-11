@@ -6,6 +6,18 @@ const { auth } = require('../middleware/auth');
 // Get predefined questions
 router.get('/predefined-questions', auth, chatController.getPredefinedQuestions);
 
+// AI chat endpoint
+router.post('/ai', auth, async (req, res) => {
+  try {
+    const { message, history } = req.body;
+    const response = await chatController.getGiminAIResponse(history || [{ role: 'user', content: message }]);
+    res.json({ message: response });
+  } catch (error) {
+    console.error('AI Chat Error:', error);
+    res.status(500).json({ message: 'Error getting AI response', error: error.message });
+  }
+});
+
 // Get all chats for a user
 router.get('/', auth, chatController.getUserChats);
 

@@ -12,7 +12,11 @@ export const useChat = () => {
 
 export const ChatProvider = ({ children }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [currentRecipient, setCurrentRecipient] = useState(null);
+  const [currentRecipient, setCurrentRecipient] = useState({
+    _id: 'ai',
+    name: 'AI Assistant',
+    profilePicture: null
+  });
 
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen);
@@ -30,7 +34,12 @@ export const ChatProvider = ({ children }) => {
 
   const closeChat = () => {
     setIsChatOpen(false);
-    setCurrentRecipient(null);
+    // Reset to AI chat when closing
+    setCurrentRecipient({
+      _id: 'ai',
+      name: 'AI Assistant',
+      profilePicture: null
+    });
   };
 
   const value = {
