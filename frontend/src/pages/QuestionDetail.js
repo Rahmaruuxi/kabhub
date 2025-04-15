@@ -319,7 +319,7 @@ const QuestionDetail = () => {
                 </div>
                 
                 {/* Edit/Delete buttons for author */}
-                {user && user._id === question.author?._id && (
+                {user && user.id === question.author?._id && (
                   <div className="flex items-center space-x-2 ml-auto">
                     <button
                       onClick={() => setShowEditForm(!showEditForm)}

@@ -75,11 +75,8 @@ export const AuthProvider = ({ children }) => {
           },
         }
       );
-      const { user, token } = response.data;
-      localStorage.setItem("token", token);
-      setUser(user);
-      setToken(token);
-      return user;
+      // Don't automatically log in the user
+      return response.data;
     } catch (error) {
       const message = error.response?.data?.message || "Registration failed";
       setError(message);

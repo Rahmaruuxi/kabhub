@@ -18,6 +18,8 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const { register, error: authError } = useAuth();
   const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validateForm = () => {
     const newErrors = {};
@@ -146,10 +148,13 @@ const Register = () => {
         year: parseInt(formData.year.trim(), 10),
       };
 
-      const user = await register(trimmedData);
-      if (user) {
-        navigate("/");
-      }
+      await register(trimmedData);
+      setSuccess(true);
+      setSuccessMessage("Registration successful! Please log in to continue.");
+      // Redirect to login after 2 seconds
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       console.error("Registration error:", error);
       if (error.response?.data?.message) {
@@ -414,6 +419,18 @@ const Register = () => {
               )}
             </div>
           </div>
+
+          {success && (
+            <div className="rounded-lg bg-green-50 p-4">
+              <div className="flex">
+                <div className="ml-3">
+                  <p className="text-sm font-medium text-green-800">
+                    {successMessage}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {authError && (
             <div className="rounded-lg bg-red-50 p-4">

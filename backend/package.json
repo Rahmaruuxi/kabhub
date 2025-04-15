@@ -1,7 +1,7 @@
 {
-  "name": "student-forum-backend",
+  "name": "kaabhub-backend",
   "version": "1.0.0",
-  "description": "Backend for student collaboration platform",
+  "description": "Backend for KaabHub collaboration platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

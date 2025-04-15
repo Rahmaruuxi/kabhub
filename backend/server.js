@@ -36,7 +36,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Database connection
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/student-forum")
+  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/kaabhub")
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -56,7 +56,7 @@ app.use("/api/messages", messageRoutes);
 
 // Basic route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Student Forum API" });
+  res.json({ message: "Welcome to KaabHub API" });
 });
 
 // Error handling middleware

@@ -283,7 +283,7 @@ const PostDetail = () => {
                   </div>
                 </div>
               </div>
-              {user && post.author && user._id === post.author._id && (
+              {user && post.author && user.id === post.author._id && (
                 <div className="ml-auto flex items-center space-x-1">
                   <button
                     onClick={() => setIsEditing(!isEditing)}

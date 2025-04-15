@@ -184,7 +184,7 @@ const MentorshipDetail = () => {
 
               {user &&
                 mentorship.mentor &&
-                user._id === mentorship.mentor._id && (
+                user.id === mentorship.mentor._id && (
                   <div className="flex items-center space-x-3">
                     <button
                       onClick={() => navigate(`/edit-mentorship/${id}`)}
