@@ -120,11 +120,7 @@ const Navbar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
-                <img
-                  src="/logo.png"
-                  alt="KAAB HUB"
-                  className="h-12 w-auto"
-                />
+                <img src="/logo.png" alt="KAAB HUB" className="h-12 w-auto" />
                 <span className="text-[#136269] text-2xl font-bold ml-2 flex items-center">
                   KAAB HUB
                 </span>
@@ -266,7 +262,7 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          {user && (
+          {user ? (
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-4">
                 {user.profilePicture ? (
@@ -319,6 +315,31 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
+          ) : (
+            <div className="pt-4 pb-3 border-t border-gray-200">
+              <div className="space-y-1">
+                <Link
+                  to="/login"
+                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="flex items-center">
+                    <ArrowLeftOnRectangleIcon className="h-5 w-5 mr-2" />
+                    Login
+                  </div>
+                </Link>
+                <Link
+                  to="/register"
+                  className="block px-4 py-2 text-base font-medium text-[#136269] hover:text-[#5DB2B3] hover:bg-gray-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="flex items-center">
+                    <UserIcon className="h-5 w-5 mr-2" />
+                    Register
+                  </div>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
       )}
@@ -342,8 +363,8 @@ const Navbar = () => {
                     </h3>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to log out? You will need to log in
-                        again to access your account.
+                        Are you sure you want to log out? You will need to log
+                        in again to access your account.
                       </p>
                     </div>
                   </div>
